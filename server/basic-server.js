@@ -1,7 +1,5 @@
 /* Import node's http module: */
 var http = require("http");
-/* Import node's url module: */
-var url = require("url");
 
 /* Imports handleRequest */
 var handleRequest = require("./request-handler.js").handler;

@@ -21,7 +21,7 @@ var app = {
   send: function(message) {
     $.ajax({
       // always use app url
-      url: app.server,
+      url: app.server + '/classes/' + message.roomname,
       type: 'POST',
       data: JSON.stringify(message),
       contentType: 'application/json',
@@ -39,16 +39,16 @@ var app = {
   },
 
   // fetch should pull last 100 msgs from server
-  fetch: function() {
+  fetch: function(roomname) {
+    roomname = roomname || app.activeChatRoom;
     $.ajax({
-      url: app.server,
+      url: app.server + '/classes/' + roomname,
       // data: {
       //   order: '-createdAt'
       // },
       success: function (data) {
         console.log('chatterbox: Successfully fetched messages');
         app.organize(JSON.parse(data).results);
-
       },
       error: function () {
         console.error('chatterbox: Failed to fetch messages');
@@ -59,7 +59,6 @@ var app = {
   // organize takes the messages array fetch returns and loads it into the users and chatrooms
   organize: function(messages) {
     // for each msg
-
     for(var i = messages.length-1; i >= 0; i--) {
       var m = messages[i];
       // check if obj id is in all messages
@@ -76,14 +75,16 @@ var app = {
         // push to both user and chatroom
         var message = new Message(m.text, m.createdAt, m.objectId, m.username, m.roomname);
         app.allMessages[m.objectId] = message;
+
         app.renderMessage(message);
       }
     }
   },
 
   renderMessage: function(message) {
+    console.log('are we even getting here')
     $('.message-list').prepend($(message.templated())); // prepend to dom
-    app.renderRoom();
+    //app.renderRoom();
   },
 
   renderRoom: function(){

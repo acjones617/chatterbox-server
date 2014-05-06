@@ -1,0 +1,46 @@
+html {
+  overflow-y: scroll;
+}
+
+body {
+  background-color: #4d4d4d;
+}
+
+#main {
+  padding: 10px 50px;
+}
+
+.col-md-3 {
+  margin-left: 3.41%;
+}
+
+.col-md-12, .col-md-8{
+  background-color: #fff;
+  border-radius: 15px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.col-md-12{
+  padding-bottom: 20px;
+}
+
+.col-md-8{
+  height:100%;
+  margin-left: 1%;
+}
+
+.friend {
+  font-weight: bold;
+}
+
+/*#chatroomlist {
+  position: fixed;
+
+}
+.col-md-8 {
+  float: right;
+  padding-left: 80px;
+  border-left: 10px solid black;
+}
+*/

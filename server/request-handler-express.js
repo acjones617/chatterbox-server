@@ -3,6 +3,9 @@ var url = require("url");
 
 var _ = require("underscore");
 
+var express = require("express");
+var app = express();
+
 /* You should implement your request handler function in this file.
  * And hey! This is already getting passed to http.createServer()
  * in basic-server.js. But it won't work as is.

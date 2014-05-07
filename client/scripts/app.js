@@ -14,14 +14,15 @@ var app = {
     app.activeChatRoom = 'lobby';
     app.allUsers = {};
     // app.server = 'https://api.parse.com/1/classes/chatterbox';
-    app.server = 'http://127.0.0.1:3000';
+    //app.server = 'http://127.0.0.1:3000';
+    app.server = 'http://localhost:3000/';
     app.fetch();
   },
 
   send: function(message) {
     $.ajax({
       // always use app url
-      url: app.server + '/classes/' + message.roomname,
+      url: app.server + 'classes/' + message.roomname,
       type: 'POST',
       data: JSON.stringify(message),
       contentType: 'application/json',
@@ -42,7 +43,7 @@ var app = {
   fetch: function(roomname) {
     roomname = roomname || app.activeChatRoom;
     $.ajax({
-      url: app.server + '/classes/' + roomname,
+      url: app.server + 'classes/' + roomname,
       // data: {
       //   order: '-createdAt'
       // },
@@ -82,7 +83,6 @@ var app = {
   },
 
   renderMessage: function(message) {
-    console.log('are we even getting here')
     $('.message-list').prepend($(message.templated())); // prepend to dom
     //app.renderRoom();
   },
